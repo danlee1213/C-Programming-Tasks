@@ -2,7 +2,7 @@
 #include <stdint.h>
 #include <stdbool.h>
 #include <string.h>
-#include "i_give_you.h"
+#include "dayconf.h"
 
 /*
 *
@@ -36,8 +36,8 @@ void save_data(day_info daymodifier){
 //Gregorian date function
 int gregorian_date(int d, int m, int y){
   static int t[] = { 0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4 };
-  y -= m < 3; 
-  return ( y + y/4 - y/100 + y/400 + t[m-1] + d) % 7; 
+  y -= m < 3;
+  return ( y + y/4 - y/100 + y/400 + t[m-1] + d) % 7;
 }
 
 int check_month[12] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
@@ -64,7 +64,7 @@ void date_input() {
       printf("Please input a date (DD/MM/YYYY): ");
       //User Input
       scanf("%d/%d/%d",&input_day,&input_month,&input_year);
-    
+
       //Input year decision
       if(input_year < 1800 || input_year >9999){
         invalid_input_msg();
@@ -102,16 +102,16 @@ void date_input() {
         break;
         case 11: daymodifier.month = NOVEMBER;
         break;
-        case 12: daymodifier.month = DECEMBER; 
+        case 12: daymodifier.month = DECEMBER;
         }
-      
+
       //In Leap Year February ends 29th
        if(LeapYear_check(daymodifier.year) == true){
         check_month[1] = 29;
       } else{
           check_month[1] = 28;
         }
-        
+
        //Input day decision
        for(int i=1; i<=12; ++i){
         if(daymodifier.month == i){
@@ -123,10 +123,10 @@ void date_input() {
           }
         }
       }
-    
+
       //gregorian calendar algorithm (Day determination)
       daymodifier.day = gregorian_date(daymodifier.date, daymodifier.month, daymodifier.year);
-      
+
       if(daymodifier.day == SUNDAY){
         strcpy(daymodifier.daystore ,"Sunday");
       }
@@ -159,16 +159,16 @@ void date_input() {
           strcpy(daymodifier.name_of_holiday, "Birthday of the Great Tim Woo, Sunday");
         }
         else if(daymodifier.date == 10 && daymodifier.month == 3){
-          strcpy(daymodifier.name_of_holiday, "Mario Day, Sunday"); 
+          strcpy(daymodifier.name_of_holiday, "Mario Day, Sunday");
         }
         else if(daymodifier.date == 31 && daymodifier.month == 3){
-          strcpy(daymodifier.name_of_holiday, "World Backup Day, Sunday");  
+          strcpy(daymodifier.name_of_holiday, "World Backup Day, Sunday");
         }
         else if(daymodifier.date == 10 && daymodifier.month == 4){
-          strcpy(daymodifier.name_of_holiday, "Whatever Day, Sunday");    
+          strcpy(daymodifier.name_of_holiday, "Whatever Day, Sunday");
         }
         else if(daymodifier.date == 13 && daymodifier.month == 4){
-          strcpy(daymodifier.name_of_holiday, "Easter, Sunday");  
+          strcpy(daymodifier.name_of_holiday, "Easter, Sunday");
         }
         else if(daymodifier.date == 11 && daymodifier.month == 5){
           strcpy(daymodifier.name_of_holiday, "National Technology Day, Sunday");
@@ -190,7 +190,7 @@ void date_input() {
         }
         printf("Day: %s\n",daymodifier.daystore);
         printf("Name of holiday: %s\n",daymodifier.name_of_holiday);
-        printf("\n"); 
+        printf("\n");
         save_data(daymodifier);
         break;
       }
@@ -204,16 +204,16 @@ void date_input() {
           strcpy(daymodifier.name_of_holiday, "Birthday of the Great Tim Woo");
         }
         else if(daymodifier.date == 10 && daymodifier.month == 3){
-          strcpy(daymodifier.name_of_holiday, "Mario Day"); 
+          strcpy(daymodifier.name_of_holiday, "Mario Day");
         }
         else if(daymodifier.date == 31 && daymodifier.month == 3){
-          strcpy(daymodifier.name_of_holiday, "World Backup Day");  
+          strcpy(daymodifier.name_of_holiday, "World Backup Day");
         }
         else if(daymodifier.date == 10 && daymodifier.month == 4){
-          strcpy(daymodifier.name_of_holiday, "Whatever Day");    
+          strcpy(daymodifier.name_of_holiday, "Whatever Day");
         }
         else if(daymodifier.date == 13 && daymodifier.month == 4){
-          strcpy(daymodifier.name_of_holiday, "Easter");  
+          strcpy(daymodifier.name_of_holiday, "Easter");
         }
         else if(daymodifier.date == 11 && daymodifier.month == 5){
           strcpy(daymodifier.name_of_holiday, "National Technology Day");
@@ -241,7 +241,7 @@ void date_input() {
         printf("\n");
         save_data(daymodifier);
         break;
-      } 
+      }
       break;
     }
   }
@@ -266,7 +266,7 @@ void display_saved_data(const int latest_index){
 
     if(save_info[i].month > 0  && save_info[i].month < 10) {
       formatted_month[0] = '0';
-		  formatted_month[1] = save_info[i].month + '0';	
+		  formatted_month[1] = save_info[i].month + '0';
       formatted_month[2] = '\0';
     }
 
@@ -288,7 +288,7 @@ void display_saved_data(const int latest_index){
     }
   }
 }
-  
+
 
 
 //Task 4
@@ -307,7 +307,7 @@ void select_saved_data(const day_info daymodifier){
       memset(&formatted_date, '\0', sizeof(formatted_date));
 
       if(save_info[saved_data_no-1].date > 0 && save_info[saved_data_no-1].date < 10) {
-          
+
           	formatted_date[0] = '0';
             formatted_date[1] = save_info[saved_data_no-1].date + '0';
             formatted_date[2] = '\0';
@@ -379,7 +379,7 @@ void select_saved_data(const day_info daymodifier){
   } else{
     printf("There is no saved data, Try again!\n\n");
   }
- 
+
 }
 
 //Bonus Task(Export)
@@ -393,7 +393,7 @@ void export_from_file(const day_info daymodifier){
     printf("Say Hello to your file!\n\n");
   }
 
-  
+
   for(int i=0; i<latest_index; ++i){
     char formatted_date[10];
     char formatted_month[10];
@@ -410,7 +410,7 @@ void export_from_file(const day_info daymodifier){
 
     if(save_info[i].month > 0  && save_info[i].month < 10) {
       formatted_month[0] = '0';
-		  formatted_month[1] = save_info[i].month + '0';	
+		  formatted_month[1] = save_info[i].month + '0';
       formatted_month[2] = '\0';
     }
 
@@ -458,25 +458,25 @@ void main_loop(){
     scanf("%s", &input);
 
     if(input == DATE_INPUT){
-      date_input(); 
+      date_input();
     }
     else if(input == IMPORT_FROM_FILE){
-      import_from_file(daymodifier);    
+      import_from_file(daymodifier);
     }
     else if(input == EXPORT_FROM_FILE){
       export_from_file(daymodifier);
     }
     else if(input == SELECT_SAVED_DATA){
-      select_saved_data(daymodifier);      
+      select_saved_data(daymodifier);
     }
     else if(input == END_PROGRAM){
      break;
     }
     else{
       invalid_input_msg();
-    }    
+    }
   }
- 
+
 }
 
 /*
