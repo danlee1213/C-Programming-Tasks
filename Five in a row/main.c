@@ -143,8 +143,6 @@ void computer_game(struct FiveInRowField *board){
 
   if(greatestORowsCount > greatestXRowsCount) {
     bool hasSetted = false;
-    //printf("greatestORowsCount > greatestXRowsCount\n");
-    //printf("greatestORowsCount: %d, greatestXRowsCount: %d\n", greatestORowsCount, greatestXRowsCount);
     // place O to up position if it is settable
     hasSetted = setO(board->boardsize, greatestORowsYCord - greatestORowsCount, greatestORowsXCord);
     // if has been setted then finish process
@@ -163,8 +161,6 @@ void computer_game(struct FiveInRowField *board){
   }
   else if(greatestORowsCount < greatestXRowsCount) {
     bool hasSetted = false;
-   // printf("greatestORowsCount < greatestXRowsCount\n");
-   // printf("greatestORowsCount: %d, greatestXRowsCount: %d\n", greatestORowsCount, greatestXRowsCount);
     // place O to up position if it is settable
     hasSetted = setO(board->boardsize, greatestXRowsYCord - greatestXRowsCount, greatestXRowsXCord);
     // if has been setted then finish process
@@ -183,8 +179,6 @@ void computer_game(struct FiveInRowField *board){
   }
   else if(greatestORowsCount == greatestXRowsCount){
     bool hasSetted = false;
-    //printf("greatestORowsCount == greatestXRowsCount\n");
-    //printf("greatestORowsCount: %d, greatestXRowsCount: %d\n", greatestORowsCount, greatestXRowsCount);
     // place O to up position if it is settable
     hasSetted = setO(board->boardsize, greatestORowsYCord - greatestORowsCount, greatestORowsXCord);
     // if has been setted then finish process
@@ -201,9 +195,6 @@ void computer_game(struct FiveInRowField *board){
       }
     }
   }
-
-  //printf("none of above are settable \n");
-  //printf("greatestORowsCount: %d, greatestXRowsCount: %d\n", greatestORowsCount, greatestXRowsCount);
 
   // none of above are settable then place it randomly
   bool hasSetted = false;

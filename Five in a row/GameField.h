@@ -158,7 +158,6 @@ int horizontal_check(char (*boardsize)[ARR_SIZE_C]){
 
       }
     }
-     // printf("horcnt: %d\n",xRowCount);
   }
   //None of them
   return -1;
@@ -195,7 +194,6 @@ int diagonal1_check(char (*boardsize)[ARR_SIZE_C]){
         }
       }
     }
-     // printf("diag1cnt: %d\n",xDiag1Count);
   }
   //None of them
   return -1;
@@ -231,7 +229,6 @@ int diagonal2_check(char (*boardsize)[ARR_SIZE_C]){
         }
       }
     }
-     // printf("diag2cnt: %d\n",xDiag2Count);
   }
 
   //None of them
@@ -245,12 +242,6 @@ int CheckWin(char (*boardsize)[ARR_SIZE_C]){
   horizontal_check(boardsize);
   diagonal1_check(boardsize);
   diagonal2_check(boardsize);
-
-
-  // printf("verticalresult: %d\n", vertical_check(board.boardsize));
-  // printf("horizontalresult: %d\n", horizontal_check(board.boardsize));
-  // printf("diag1result: %d\n", diagonal1_check(board.boardsize));
-  // printf("diag2result: %d\n", diagonal2_check(board.boardsize));
 
   if(vertical_check(boardsize) == PLAYER1_EndState || horizontal_check(boardsize) == PLAYER1_EndState || diagonal1_check(boardsize) == PLAYER1_EndState || diagonal2_check(boardsize) == PLAYER1_EndState){
     return PLAYER1_WIN;
