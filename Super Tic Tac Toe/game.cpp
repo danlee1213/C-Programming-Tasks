@@ -11,50 +11,50 @@ bool checkWin(int player, const int board[][3]){
 
     // Please fill in your codes here.
 
-    bool sequence = true;
+    bool consecutive = true;
     //Horizontal Checking
     for (int i = 0; i < 3; i++) {
       for (int j = 0; j < 3; j++) {
-        sequence = sequence && (board [i][j] == player);
-        if(!sequence){
+        consecutive = consecutive && (board [i][j] == player);
+        if(!consecutive){
           break;
         }
       }
-      if(sequence){
+      if(consecutive){
         return true;
       }
     }
 
     //Vertical Checking
     for (int i = 0; i < 3; i++) {
-      sequence = true;
+      consecutive = true;
       for (int j = 0; j < 3; j++) {
-        sequence = sequence && (board [j][i] == player);
+        consecutive = consecutive && (board [j][i] == player);
       }
-      if(sequence){
+      if(consecutive){
         return true;
       }
       else {
-        sequence = true;
+        consecutive = true;
       }
     }
 
     //Diagonal Checking-1
     for (int i = 0; i < 3; i++) {
-      sequence = sequence && (board[i][i] == player);
+      consecutive = consecutive && (board[i][i] == player);
     }
-    if(sequence){
+    if(consecutive){
       return true;
     }
     else {
-      sequence = true;
+      consecutive = true;
     }
 
     //Diagonal Checking-2
     for (int i = 0; i < 3; i++) {
-      sequence = sequence && (board[2-i][i] == player);
+      consecutive = consecutive && (board[2-i][i] == player);
     }
-    if(sequence){
+    if(consecutive){
       return true;
     }
     else {
