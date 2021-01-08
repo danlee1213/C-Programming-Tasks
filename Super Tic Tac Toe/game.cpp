@@ -25,7 +25,7 @@ bool checkWin(int player, const int board[][3]){
       else{
         consecutive = true;
       }
-    }
+    
 
     //Vertical Checking
     for (int i = 0; i < 3; i++) {
