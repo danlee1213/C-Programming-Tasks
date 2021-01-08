@@ -14,14 +14,16 @@ bool checkWin(int player, const int board[][3]){
     bool consecutive = true;
     //Horizontal Checking
     for (int i = 0; i < 3; i++) {
+      consecutive = true;
       for (int j = 0; j < 3; j++) {
         consecutive = consecutive && (board [i][j] == player);
-        if(!consecutive){
-          break;
         }
       }
       if(consecutive){
         return true;
+      }
+      else{
+        consecutive = true;
       }
     }
 
